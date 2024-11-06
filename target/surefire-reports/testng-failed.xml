@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="tests" name="Failed suite [Surefire suite]" verbose="0">
+  <test thread-count="3" name="Surefire test-0(failed)" verbose="0">
+    <parameter name="platform" value="0"/>
+    <classes>
+      <class name="org.rahulshettyacademy.firstTest">
+        <methods>
+          <include name="ConfigureAppium"/>
+          <include name="preSetup"/>
+          <include name="FillForm"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- org.rahulshettyacademy.firstTest -->
+    </classes>
+  </test> <!-- Surefire test-0(failed) -->
+  <test thread-count="3" name="Surefire test-2(failed)" verbose="0">
+    <parameter name="platform" value="2"/>
+    <classes>
+      <class name="org.rahulshettyacademy.firstTest">
+        <methods>
+          <include name="ConfigureAppium"/>
+          <include name="preSetup"/>
+          <include name="FillForm"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- org.rahulshettyacademy.firstTest -->
+    </classes>
+  </test> <!-- Surefire test-2(failed) -->
+  <test thread-count="3" name="Surefire test-1(failed)" verbose="0">
+    <parameter name="platform" value="1"/>
+    <classes>
+      <class name="org.rahulshettyacademy.firstTest">
+        <methods>
+          <include name="ConfigureAppium"/>
+          <include name="preSetup"/>
+          <include name="FillForm"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- org.rahulshettyacademy.firstTest -->
+    </classes>
+  </test> <!-- Surefire test-1(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->
