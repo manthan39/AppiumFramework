@@ -40,7 +40,6 @@ public class IOSBaseTest extends AppiumUtils{
 
 	public IOSDriver driver;
 	public AppiumDriverLocalService service;
-	public HomePage homePage;
 	
 	@BeforeClass
 	public void ConfigureAppium() throws IOException
@@ -64,7 +63,6 @@ public class IOSBaseTest extends AppiumUtils{
 				
 			 driver = new IOSDriver(service.getUrl(), options);
 			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			 homePage = new HomePage(driver);
 			 
 	}
 	
