@@ -57,7 +57,9 @@ public class IOSBaseTest extends AppiumUtils{
 			
 				XCUITestOptions	 options = new XCUITestOptions();	
 				options.setDeviceName("iPhone 13 Pro");
-				options.setApp("/Users/courierdost/Desktop/UIKitCatalog.app");
+				options.setApp(System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//Runner.app");
+				
+				///Users/bhagatsinhk/Documents/bgtkher002/AppiumFramework/src/test/java/org/courierdost/resources
 				options.setPlatformVersion("15.5");
 				//Appium- Webdriver Agent -> IOS Apps.
 				options.setWdaLaunchTimeout(Duration.ofSeconds(20));
