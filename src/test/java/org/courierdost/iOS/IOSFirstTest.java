@@ -1,4 +1,4 @@
-package org.courierdost;
+package org.courierdost.iOS;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;

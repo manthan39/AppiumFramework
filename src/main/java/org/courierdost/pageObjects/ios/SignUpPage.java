@@ -1,9 +1,9 @@
-package org.courierdost.pageObjects.android;
+package org.courierdost.pageObjects.ios;
 
 import java.time.Duration;
 import java.util.Arrays;
 
-import org.courierdost.utils.AndroidActions;
+import org.courierdost.utils.IOSActions;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,13 +11,13 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.github.ashwith.flutter.FlutterFinder;
 
-public class LoginPage extends AndroidActions{
-	public AndroidDriver driver;
+public class SignUpPage extends IOSActions{
+	public IOSDriver driver;
 	
-	public LoginPage(AndroidDriver driver) {
+	public SignUpPage(IOSDriver driver) {
 		super(driver);
 		this.driver =driver;
 	}
