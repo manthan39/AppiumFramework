@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumBy;
 
-public class IOSBasics extends IOSBaseTest{
+public class IOSFirstTest extends IOSBaseTest{
 
 	
 	@Test

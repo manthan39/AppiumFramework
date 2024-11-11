@@ -38,7 +38,6 @@ public class AndroidBaseTest extends AppiumUtils{
 
 	public AndroidDriver driver;
 	public AppiumDriverLocalService service;
-	public FormPage formPage;
 	
 	@BeforeClass(alwaysRun=true)
 	public void ConfigureAppium() throws IOException
@@ -50,12 +49,12 @@ public class AndroidBaseTest extends AppiumUtils{
         flutterCapabilities.setCapability("appium:automationName", "uiAutomator2");
         
      
-        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//General-Store.apk");
+        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//app-cd-vendor-debug.apk");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), flutterCapabilities);
 		
 	//	driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			 formPage= new FormPage(driver);
+		
 	}
 	
 	
