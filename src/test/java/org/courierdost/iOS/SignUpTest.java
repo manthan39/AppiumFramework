@@ -14,7 +14,7 @@ public class SignUpTest extends IOSBaseTest  {
 		LP.clickNextButton();
 		LP.clickNextButton();
 		LP.clickProceed();
-		LP.clickGSTNumberFieldAndSendNumber("36AABCU9355J1ZQ");
+		LP.clickGSTNumberFieldAndSendNumber("36AABCU8422J1ZQ");
 		LP.clickProceed();
 		LP.fillCompanyDetails();
 		LP.fillOTP("1234");
