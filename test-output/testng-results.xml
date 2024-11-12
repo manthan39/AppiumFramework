@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-09T14:51:29 IST" name="Default suite" finished-at="2024-11-09T14:51:50 IST" duration-ms="21109">
+  <suite started-at="2024-11-12T21:59:14 IST" name="Default suite" finished-at="2024-11-12T21:59:34 IST" duration-ms="19986">
     <groups>
     </groups>
-    <test started-at="2024-11-09T14:51:29 IST" name="Default test" finished-at="2024-11-09T14:51:50 IST" duration-ms="21109">
-      <class name="org.courierdost.firstTest">
-        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:org.courierdost.firstTest@292d1c71]" started-at="2024-11-09T14:51:29 IST" name="ConfigureAppium" finished-at="2024-11-09T14:51:36 IST" duration-ms="6459" status="PASS">
+    <test started-at="2024-11-12T21:59:14 IST" name="Default test" finished-at="2024-11-12T21:59:34 IST" duration-ms="19986">
+      <class name="org.courierdost.android.androidFirstTest">
+        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:org.courierdost.android.androidFirstTest@63192798]" started-at="2024-11-12T21:59:14 IST" name="ConfigureAppium" finished-at="2024-11-12T21:59:19 IST" duration-ms="5232" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ConfigureAppium -->
-        <test-method signature="FillForm()[pri:0, instance:org.courierdost.firstTest@292d1c71]" started-at="2024-11-09T14:51:36 IST" name="FillForm" finished-at="2024-11-09T14:51:50 IST" duration-ms="14235" status="PASS">
+        <test-method signature="FillForm()[pri:0, instance:org.courierdost.android.androidFirstTest@63192798]" started-at="2024-11-12T21:59:19 IST" name="FillForm" finished-at="2024-11-12T21:59:34 IST" duration-ms="14386" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- FillForm -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:org.courierdost.firstTest@292d1c71]" started-at="2024-11-09T14:51:50 IST" name="tearDown" finished-at="2024-11-09T14:51:50 IST" duration-ms="354" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:org.courierdost.android.androidFirstTest@63192798]" started-at="2024-11-12T21:59:34 IST" name="tearDown" finished-at="2024-11-12T21:59:34 IST" duration-ms="326" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- org.courierdost.firstTest -->
+      </class> <!-- org.courierdost.android.androidFirstTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

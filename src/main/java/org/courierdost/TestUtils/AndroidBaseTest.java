@@ -49,7 +49,7 @@ public class AndroidBaseTest extends AppiumUtils{
         flutterCapabilities.setCapability("appium:automationName", "uiAutomator2");
         
      
-        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//app-cd-vendor-debug.apk");
+        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//main//java//org//courierdost//resources//General-Store.apk");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), flutterCapabilities);
 		
 	//	driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);

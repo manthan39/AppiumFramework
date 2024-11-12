@@ -12,14 +12,10 @@ public class androidFirstTest extends AndroidBaseTest
 {
 	FormPage fp;
 	
-	@BeforeTest
-	
-	public void senddriver() {
-		fp = new FormPage(this.driver);
-	}
 	
 	@Test
 	public void FillForm(){
+	fp = new FormPage(driver);
 	fp.setNameField("manthan");
 	fp.setGender("Male");
 	fp.setCountrySelection("Brazil");
