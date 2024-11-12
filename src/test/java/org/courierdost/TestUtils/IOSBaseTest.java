@@ -53,20 +53,21 @@ public class IOSBaseTest extends AppiumUtils{
 		String ipAddress = prop.getProperty("ipAddress");
 		String port = prop.getProperty("port");
 			
-		service = startAppiumServer(ipAddress,Integer.parseInt(port));
+	//	service = startAppiumServer(ipAddress,Integer.parseInt(port));
 			
 				XCUITestOptions	 options = new XCUITestOptions();	
-				options.setDeviceName("iPhone 13 Pro");
+				options.setDeviceName("iPhone 16 Pro");
 				options.setApp(System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//Runner.app");
 				
 				///Users/bhagatsinhk/Documents/bgtkher002/AppiumFramework/src/test/java/org/courierdost/resources
-				options.setPlatformVersion("15.5");
+				options.setPlatformVersion("18.1");
 				//Appium- Webdriver Agent -> IOS Apps.
 				options.setWdaLaunchTimeout(Duration.ofSeconds(20));
+				options.setCapability("autoAcceptAlerts", true);
 				
-			 driver = new IOSDriver(service.getUrl(), options);
+			 driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			 homePage = new HomePage(driver);
+			 
 			 
 	}
 	
@@ -79,7 +80,6 @@ public class IOSBaseTest extends AppiumUtils{
 	public void tearDown()
 	{
 		driver.quit();
-        service.stop();
 		}
 	
 }

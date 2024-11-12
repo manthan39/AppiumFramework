@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.Arrays;
 
 import org.courierdost.utils.IOSActions;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,7 +30,12 @@ public class SignUpPage extends IOSActions{
 	}
 	
 	public WebElement gstNumber() {
-		return driver.findElement(AppiumBy.xpath("//android.widget.EditText"));
+		return driver.findElement(AppiumBy.xpath("//XCUIElementTypeTextField[@name=\"GST number*\n"
+				+ "GST number*\"]"));
+	}
+	
+	public WebElement gstNumberInputClick() {
+		return driver.findElement(AppiumBy.xpath("//XCUIElementTypeTextField[@name=\"GST number*\"]"));
 	}
 
 	public WebElement proceedBtn() {
@@ -46,10 +52,8 @@ public class SignUpPage extends IOSActions{
 	
 	public void addOTP(String OTP) {
 	
-		//finder.byValueKey("3").click();
-	//	driver.findElement(AppiumBy.xpath("//android.view.View[@content-desc="+"Verify your mobile number Please enter the 4-digit OTP sent to"+"]/android.widget.ImageView[3]")).click();
 		
-		  WebElement resendOtpElement = driver.findElement(AppiumBy.accessibilityId("Verify number"));
+		WebElement resendOtpElement = driver.findElement(AppiumBy.accessibilityId("Verify number"));
 
        //  Get the coordinates of the element
         Point elementLocation = resendOtpElement.getLocation();
@@ -59,8 +63,8 @@ public class SignUpPage extends IOSActions{
         System.out.println(elementX+"=>>>>>>"+ elementY);
 
         // Define the coordinates above the element
-        int clickX = elementX+106;//  Adjusted X coordinate to click in the visible area
-        int clickY = elementY-289;// 20 pixels above the element
+        int clickX = elementX+17;//  Adjusted X coordinate to click in the visible area
+        int clickY = elementY-109;// 20 pixels above the element
 
        //  Using W3C Actions API to perform the tap
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
@@ -78,10 +82,9 @@ public class SignUpPage extends IOSActions{
           
           // Type the text with a delay between each character
           String textToType = OTP;
-          for (char c : textToType.toCharArray()) {
-              actions.sendKeys(String.valueOf(c));
-              actions.pause(Duration.ofMillis(500));  // Add delay of 500 ms between keystrokes
-          }
+       
+          
+          actions.sendKeys(textToType);
 
           // Perform the action sequence
           actions.perform();
@@ -91,20 +94,35 @@ public class SignUpPage extends IOSActions{
 	}
 	public WebElement addfirstPin() {
 		return  driver.findElement(
-	            AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.EditText\").instance(0)")
+	            AppiumBy.accessibilityId("Enter a 4-digit PIN")
 		        );
 		        
 	}
 	public WebElement reEnterPin() {
 		return  driver.findElement(
-	            AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.EditText\").instance(1)")
+	            AppiumBy.accessibilityId("Re-enter the 4-digit PIN")
 		        );
 		
 	}
 	public WebElement savePINandContinue() {
 		return driver.findElement(AppiumBy.accessibilityId("Save PIN and continue"));
 	}
+	
+	private WebElement selectAllInternationalServices() {
+		return driver.findElement(AppiumBy.androidUIAutomator
+				("new UiSelector().className(\"android.widget.CheckBox\").instance(0)"));
+	}
+	
+	private WebElement selectAllDomesticServices() {
+		return driver.findElement(AppiumBy.androidUIAutomator
+				("new UiSelector().className(\"android.widget.CheckBox\").instance(3)"));
+	}
+	
+	private WebElement proceedServiceBtn() {
+		return driver.findElement(AppiumBy.accessibilityId("Save PIN and continue"));
+	}
 
+	//======================================Locators end================================================//
 	
 	public void clickNextButton() {
 		getNextButton().click();
@@ -112,7 +130,7 @@ public class SignUpPage extends IOSActions{
 	
 	
 	public void clickGSTNumberFieldAndSendNumber(String GST) {
-		gstNumber().click();
+		gstNumberInputClick().click();
 		gstNumber().sendKeys(GST);
 	//	driver.hideKeyboard();
 	}
@@ -122,24 +140,33 @@ public class SignUpPage extends IOSActions{
 	public void fillCompanyDetails() {
 		verifyOTP().click();
 	}
-	public void fillOTP(String OTP) {
+	public void fillOTP(String OTP) throws InterruptedException {
 		addOTP(OTP);
-		
+		Thread.sleep(3000);
 		verifyOTPNumber().click();
 		
 	}
 	
 	public void addfirstpin(String pin) {
 		addfirstPin().click();
-		addfirstPin().sendKeys(pin);
+		Actions actions = new Actions(driver);
+		actions.sendKeys(pin).perform();
+	//	addfirstPin().sendKeys(Keys.NUMPAD1);
 	}
 	public void addReEnterpin(String pin) throws InterruptedException {
 		//driver.wait(200);
 		reEnterPin().click();
-		reEnterPin().sendKeys(pin);
+		Actions actions = new Actions(driver);
+		actions.sendKeys(pin).perform();;
 	}
 	public void savePinAndContinue() {
 		savePINandContinue().click();;
+	}
+	
+	public void selectInternationalDomestic(){
+		selectAllInternationalServices().click();
+		selectAllDomesticServices().click();
+		proceedServiceBtn().click();
 	}
 	
 

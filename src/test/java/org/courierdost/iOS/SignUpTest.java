@@ -14,13 +14,15 @@ public class SignUpTest extends IOSBaseTest  {
 		LP.clickNextButton();
 		LP.clickNextButton();
 		LP.clickProceed();
-		LP.clickGSTNumberFieldAndSendNumber("36AABCU9355J1ZS");
+		LP.clickGSTNumberFieldAndSendNumber("36AABCU9355J1ZQ");
 		LP.clickProceed();
 		LP.fillCompanyDetails();
 		LP.fillOTP("1234");
 		LP.addfirstpin("1234");
 		LP.addReEnterpin("1234");
 		LP.savePinAndContinue();
+		LP.selectInternationalDomestic();
+		LP.clickProceed();
 	}
 	
 }
