@@ -1,6 +1,7 @@
 package org.courierdost.pageObjects.android;
 
 import org.courierdost.utils.AndroidActions;
+import org.courierdost.utils.AppiumUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -49,6 +50,7 @@ public class FormPage extends AndroidActions{
 	
 	public void setNameField(String name)
 	{
+		AppiumUtils.waitForElementToBeVisible(nameField,driver,10);
 		nameField.sendKeys(name);
 		driver.hideKeyboard();
 		
@@ -72,6 +74,7 @@ public class FormPage extends AndroidActions{
 	public void setCountrySelection(String countryName)
 	
 	{
+		AppiumUtils.waitForElementToBeClickable(countrySelection, driver, 10);
 		countrySelection.click();
 		scrollToText(countryName);
 		driver.findElement(By.xpath("//android.widget.TextView[@text='"+countryName+"']")).click();

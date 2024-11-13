@@ -11,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -67,11 +68,26 @@ public abstract class AppiumUtils {
 	}
 	
 	
-	public void waitForElementToAppear(WebElement ele, AppiumDriver driver)
+	public static void waitForElementToAppear(WebElement ele, AppiumDriver driver, ExpectedCondition<WebElement> condition, int timeout)
 	{
-		WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.attributeContains((ele),"text" , "Cart"));
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+	        wait.until(condition);
 	}
+	
+	public static void waitForTextInElement(WebElement ele, AppiumDriver driver, String expectedText, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.textToBePresentInElement(ele, expectedText));
+    }
+	
+	public static void waitForElementToBeVisible(WebElement ele, AppiumDriver driver, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.visibilityOf(ele));
+    }
+	
+	public static void waitForElementToBeClickable(WebElement ele, AppiumDriver driver, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.elementToBeClickable(ele));
+    }
 	
 	
 	public String getScreenshotPath(String testCaseName, AppiumDriver driver) throws IOException
