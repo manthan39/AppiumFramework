@@ -109,17 +109,19 @@ public class SignUpPage extends IOSActions{
 	}
 	
 	private WebElement selectAllInternationalServices() {
-		return driver.findElement(AppiumBy.androidUIAutomator
-				("new UiSelector().className(\"android.widget.CheckBox\").instance(0)"));
+		return driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeSwitch[`value == \"0\"`][1]"));
 	}
 	
 	private WebElement selectAllDomesticServices() {
-		return driver.findElement(AppiumBy.androidUIAutomator
-				("new UiSelector().className(\"android.widget.CheckBox\").instance(3)"));
+		return driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeSwitch[`value == \"0\"`][4]"));
 	}
 	
 	private WebElement proceedServiceBtn() {
 		return driver.findElement(AppiumBy.accessibilityId("Save PIN and continue"));
+	}
+	
+	private WebElement typeOfServiceScreenHeader() {
+		return driver.findElement(AppiumBy.accessibilityId("Types of services\\nSelect the services you offer"));
 	}
 
 	//======================================Locators end================================================//
@@ -132,7 +134,6 @@ public class SignUpPage extends IOSActions{
 	public void clickGSTNumberFieldAndSendNumber(String GST) {
 		gstNumberInputClick().click();
 		gstNumber().sendKeys(GST);
-	//	driver.hideKeyboard();
 	}
 	public void clickProceed() {
 		proceedBtn().click();
@@ -151,21 +152,21 @@ public class SignUpPage extends IOSActions{
 		addfirstPin().click();
 		Actions actions = new Actions(driver);
 		actions.sendKeys(pin).perform();
-	//	addfirstPin().sendKeys(Keys.NUMPAD1);
 	}
 	public void addReEnterpin(String pin) throws InterruptedException {
-		//driver.wait(200);
 		reEnterPin().click();
 		Actions actions = new Actions(driver);
 		actions.sendKeys(pin).perform();;
 	}
-	public void savePinAndContinue() {
-		savePINandContinue().click();;
+	public void savePinAndContinue() throws InterruptedException {
+		this.
+		savePINandContinue().click();
 	}
 	
 	public void selectInternationalDomestic(){
 		selectAllInternationalServices().click();
 		selectAllDomesticServices().click();
+		this.scrollToEndAction();
 		proceedServiceBtn().click();
 	}
 	
