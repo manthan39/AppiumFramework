@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.Arrays;
 
 import org.courierdost.utils.AndroidActions;
+import org.courierdost.utils.AppiumUtils;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,7 +17,7 @@ import io.github.ashwith.flutter.FlutterFinder;
 
 public class SignUpPage extends AndroidActions{
 	public AndroidDriver driver;
-	
+	AppiumUtils util = new AppiumUtils();
 	public SignUpPage(AndroidDriver driver) {
 		super(driver);
 		this.driver =driver;
