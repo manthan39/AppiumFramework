@@ -44,12 +44,32 @@ public class AndroidBaseTest extends AppiumUtils{
 	{
 		DesiredCapabilities flutterCapabilities = new DesiredCapabilities();
     //     flutterCapabilities.setCapability( "appium:deviceName", "Samsung Galaxy S22 Ultra" );
-	        flutterCapabilities.setCapability( "platformName", "android" );
+	//        flutterCapabilities.setCapability( "platformName", "android" );
 	//        flutterCapabilities.setCapability( "platformVersion", "12.0" );
-	        flutterCapabilities.setCapability("appium:automationName", "uiAutomator2");
+	//        flutterCapabilities.setCapability("appium:automationName", "uiAutomator2");
      //      flutterCapabilities.setCapability("app", "bs://1496fbb3a6c878843188e841e6bfdf693a0c40f3"); 
 //	        flutterCapabilities.setCapability("browserstack.user", "manthanbhatiya_JpmQqv"); 
 //	        flutterCapabilities.setCapability("browserstack.key", "Yu9uH66YoTCAYrD3AZc1"); 
+
+	        flutterCapabilities.setCapability("platformName", "Android");
+
+        // Specify the Android API level (e.g., API level 29 for Android 10)
+        flutterCapabilities.setCapability("platformVersion", "10.0");  // Adjust if necessary
+        flutterCapabilities.setCapability("deviceName", "Android Emulator");
+
+        // Automation engine for Android - UiAutomator2 is the default for most Android tests
+        flutterCapabilities.setCapability("automationName", "UiAutomator2");
+
+      
+
+        // Do not reset app data between test runs
+        flutterCapabilities.setCapability("noReset", true);
+
+        // Enable full-screen mode (optional, useful for headless mode)
+        flutterCapabilities.setCapability("fullContextList", true);
+
+        // Set the Appium server URL - this assumes it's running on localhost:4723 (default)
+        flutterCapabilities.setCapability("appiumVersion", "2.0");
      
         flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//General-Store.apk");
    //     driver = new AndroidDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), flutterCapabilities);
