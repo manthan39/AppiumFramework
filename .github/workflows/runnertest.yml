@@ -27,10 +27,14 @@ jobs:
           node -v   # Verify Node.js version
           npm -v    # Verify npm version
 
-      - name: Install Appium 2.0
+      - name: Install & run Appium 2.0
         run: |
           sudo npm install -g appium@next
           appium --version  # Verify Appium version
+          appium --log-level info &
+          appium &>/dev/null &
+          appium driver install uiautomator2
+          appium driver list --installed  # Verify installed drivers
 
       - name: Enable KVM
         run: |
@@ -42,4 +46,4 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: mvn clean test -Pandroid
+          script: mvn clean test -Dplatform=android
