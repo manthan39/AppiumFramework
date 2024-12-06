@@ -54,7 +54,7 @@ public class AndroidBaseTest extends AppiumUtils{
         flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//General-Store.apk");
    //     driver = new AndroidDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), flutterCapabilities);
 		
-		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),flutterCapabilities);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
