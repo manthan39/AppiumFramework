@@ -43,18 +43,18 @@ public class AndroidBaseTest extends AppiumUtils{
 	public void ConfigureAppium() throws IOException
 	{
 		DesiredCapabilities flutterCapabilities = new DesiredCapabilities();
-         flutterCapabilities.setCapability( "appium:deviceName", "Samsung Galaxy S22 Ultra" );
+    //     flutterCapabilities.setCapability( "appium:deviceName", "Samsung Galaxy S22 Ultra" );
 	        flutterCapabilities.setCapability( "platformName", "android" );
-	        flutterCapabilities.setCapability( "platformVersion", "12.0" );
+	//        flutterCapabilities.setCapability( "platformVersion", "12.0" );
 	        flutterCapabilities.setCapability("appium:automationName", "uiAutomator2");
-           flutterCapabilities.setCapability("app", "bs://1496fbb3a6c878843188e841e6bfdf693a0c40f3"); 
-	        flutterCapabilities.setCapability("browserstack.user", "manthanbhatiya_JpmQqv"); 
-	        flutterCapabilities.setCapability("browserstack.key", "Yu9uH66YoTCAYrD3AZc1"); 
+     //      flutterCapabilities.setCapability("app", "bs://1496fbb3a6c878843188e841e6bfdf693a0c40f3"); 
+//	        flutterCapabilities.setCapability("browserstack.user", "manthanbhatiya_JpmQqv"); 
+//	        flutterCapabilities.setCapability("browserstack.key", "Yu9uH66YoTCAYrD3AZc1"); 
      
-   //     flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//General-Store.apk");
-        driver = new AndroidDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), flutterCapabilities);
+        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//General-Store.apk");
+   //     driver = new AndroidDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), flutterCapabilities);
 		
-	//	driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
