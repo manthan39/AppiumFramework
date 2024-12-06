@@ -71,7 +71,7 @@ public class AndroidBaseTest extends AppiumUtils{
         // Set the Appium server URL - this assumes it's running on localhost:4723 (default)
         flutterCapabilities.setCapability("appiumVersion", "2.0");
      
-        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//java//org//courierdost//resources//General-Store.apk");
+        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//amin//java//org//courierdost//resources//General-Store.apk");
    //     driver = new AndroidDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), flutterCapabilities);
 		
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),flutterCapabilities);
