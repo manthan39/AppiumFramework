@@ -1,41 +1,87 @@
-name: Run android tests in github runner
+name: Android Appium Tests with Emulator
 
 on:
-    
-  workflow_dispatch:
-  
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  test:
-    runs-on: ubantu-latest
- 
+  android:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        java-version: [11, 17]  # Test with multiple Java versions
+        android-version: [30, 31]  # You can test on different Android versions
+
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven        
-          
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - run: |
-            npm install -g appium@v1.22
-            appium -v
-            appium &>/dev/null &
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v2
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: adoptopenjdk
 
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          curl \
+          unzip \
+          python3-pip \
+          libqt5webkit5 \
+          lib32z1 lib32ncurses6 lib32stdc++6
 
-      - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: mvn clean test -Dplatform=android
+    - name: Install Node.js (for Appium)
+      run: |
+        curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+        sudo apt-get install -y nodejs
 
-      - name: Upload Test Report as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-report
-          path: reports/index.html
+    - name: Install Appium
+      run: |
+        sudo npm install -g appium
+
+    - name: Install Appium Doctor (for verifying setup)
+      run: |
+        sudo npm install -g appium-doctor
+        appium-doctor
+
+    - name: Install Maven (for running tests)
+      run: |
+        sudo apt-get install -y maven
+
+    - name: Download APK from GitHub Release
+      run: |
+        curl -L -o my-app.apk https://github.com/${{ github.repository }}/releases/tag/test/app-cd-vendor-debug.apk
+
+    - name: Set up Android Emulator using reactivecircus/android-emulator-runner
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: ${{ matrix.android-version }}
+        target: google_apis
+        arch: x86_64
+        force-avd-creation: true
+        emulator-options: "-no-window -gpu off -no-accel"
+    
+    - name: Install APK on Emulator
+      run: |
+        # Wait for the emulator to be ready
+        $HOME/Android/Sdk/platform-tools/adb wait-for-device
+
+        # Install the APK
+        $HOME/Android/Sdk/platform-tools/adb install my-app.apk
+
+    - name: Run Appium tests using TestNG
+      run: |
+        mvn clean test -Dtestng.groups="smoke" -Dappium.app.path="my-app.apk"
+      
+    - name: Upload TestNG Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: testng-reports
+        path: target/test-classes/testng-results.xml
